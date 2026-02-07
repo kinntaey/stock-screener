@@ -1,0 +1,48 @@
+name: Update and Deploy
+
+on:
+  schedule:
+    # 미국 정규장 마감(4PM ET) + 1시간 = 5PM ET = 22:00 UTC (서머타임), 21:00 UTC (겨울)
+    # 안전하게 22:00 UTC로 설정 (한국시간 오전 7시)
+    - cron: '0 22 * * 1-5'  # 월-금 22:00 UTC
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run screener
+        run: |
+          python screener.py
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        working-directory: ./dashboard
+        run: npm ci
+
+      - name: Build
+        working-directory: ./dashboard
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dashboard/dist

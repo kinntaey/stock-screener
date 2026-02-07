@@ -3,9 +3,11 @@ import FilterPanel from "./components/FilterPanel";
 import StockTable from "./components/StockTable";
 import SectorPERTable from "./components/SectorPERTable";
 import InfoBox from "./components/InfoBox";
+import StockSearch from "./components/StockSearch";
 
 const DEFAULT_FILTERS = {
-  rsi: 40,
+  rsiMin: 0,
+  rsiMax: 40,
   marketCap: 100,
   pctFromHigh: 65,
   epsGrowth: 0,
@@ -44,7 +46,7 @@ export default function App() {
   const filteredStocks = useMemo(() => {
     if (!data) return [];
     return data.stocks.filter((s) => {
-      if (s.rsi == null || s.rsi >= filters.rsi) return false;
+      if (s.rsi == null || s.rsi < filters.rsiMin || s.rsi > filters.rsiMax) return false;
       if (
         s.market_cap == null ||
         s.market_cap <= filters.marketCap * 1_000_000_000
@@ -122,10 +124,11 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="text-2xl font-bold text-gray-900">
-            S&P 500 Stock Screener
-          </h1>
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
+            <h1 className="text-2xl font-bold text-gray-900">
+              S&P 500 Stock Screener
+            </h1>
           {data.metadata && data.metadata.sp500_above_200dma != null && (
             <span
               className={`text-xs font-semibold px-3 py-1 rounded-full ${
@@ -139,6 +142,8 @@ export default function App() {
                 : "S&P500 하락 추세 — 매수 대기 권장"}
             </span>
           )}
+          </div>
+          {data.stocks && <StockSearch stocks={data.stocks} />}
         </div>
         {data.metadata && (
           <p className="text-sm text-gray-500 mt-1">

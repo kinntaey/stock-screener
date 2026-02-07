@@ -26,14 +26,15 @@ export default function FilterPanel({
       </div>
 
       <div className="space-y-5">
-        <SliderFilter
+        <RangeFilter
           label="RSI (14)"
           hint="낮을수록 과매도 → 반등 기대"
-          value={filters.rsi}
-          min={20}
-          max={70}
-          onChange={(v) => update("rsi", v)}
-          format={(v) => `< ${v}`}
+          minValue={filters.rsiMin}
+          maxValue={filters.rsiMax}
+          min={0}
+          max={100}
+          onMinChange={(v) => update("rsiMin", v)}
+          onMaxChange={(v) => update("rsiMax", v)}
         />
 
         <SliderFilter
@@ -161,6 +162,56 @@ function SliderFilter({ label, hint, value, min, max, step = 1, onChange, format
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
       />
+      <div className="flex justify-between text-xs text-gray-400 mt-0.5">
+        <span>{min}</span>
+        <span>{max}</span>
+      </div>
+    </div>
+  );
+}
+
+function RangeFilter({ label, hint, minValue, maxValue, min, max, step = 1, onMinChange, onMaxChange }) {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-0.5">
+        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <span className="text-sm font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+          {minValue} ~ {maxValue}
+        </span>
+      </div>
+      {hint && <p className="text-xs text-gray-400 mb-1">{hint}</p>}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-500 w-8">Min</span>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={minValue}
+            onChange={(e) => {
+              const v = Number(e.target.value);
+              if (v <= maxValue) onMinChange(v);
+            }}
+            className="flex-1 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+          />
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-500 w-8">Max</span>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={maxValue}
+            onChange={(e) => {
+              const v = Number(e.target.value);
+              if (v >= minValue) onMaxChange(v);
+            }}
+            className="flex-1 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+          />
+        </div>
+      </div>
       <div className="flex justify-between text-xs text-gray-400 mt-0.5">
         <span>{min}</span>
         <span>{max}</span>
