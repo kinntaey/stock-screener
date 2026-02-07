@@ -27,7 +27,7 @@ export default function App() {
   const [sortAsc, setSortAsc] = useState(true);
 
   useEffect(() => {
-    fetch("/stock_data.json")
+    fetch(import.meta.env.BASE_URL + "stock_data.json")
       .then((r) => {
         if (!r.ok) throw new Error("stock_data.json을 불러올 수 없습니다.");
         return r.json();
