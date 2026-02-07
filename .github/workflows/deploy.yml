@@ -44,6 +44,9 @@ jobs:
         working-directory: ./dashboard
         run: npm run build
 
+      - name: Copy stock data to dist
+        run: cp dashboard/public/stock_data.json dashboard/dist/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
