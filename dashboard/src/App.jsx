@@ -139,7 +139,7 @@ export default function App() {
               </svg>
             </button>
             <h1 className="text-lg md:text-2xl font-bold text-gray-900 truncate">
-              S&P 500 Screener
+              S&P 500 Oversold & Undervalued
             </h1>
             {data.metadata && data.metadata.sp500_above_200dma != null && (
               <span
