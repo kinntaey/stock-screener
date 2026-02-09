@@ -89,13 +89,13 @@ export default function StockSearch({ stocks }) {
             setHighlightIndex(0);
           }}
           onKeyDown={handleKeyDown}
-          placeholder="종목 검색 (티커 또는 이름)"
-          className="w-64 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="종목 검색"
+          className="w-32 sm:w-48 md:w-64 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
 
       {results.length > 0 && !selected && (
-        <ul className="absolute top-full right-0 mt-1 w-80 bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-64 overflow-auto">
+        <ul className="absolute top-full right-0 mt-1 w-64 sm:w-80 bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-64 overflow-auto">
           {results.map((s, idx) => (
             <li
               key={s.symbol}
@@ -110,7 +110,7 @@ export default function StockSearch({ stocks }) {
       )}
 
       {selected && (
-        <div className="absolute top-full right-0 mt-1 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4">
+        <div className="absolute top-full right-0 mt-1 w-72 sm:w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-3 sm:p-4">
           <div className="flex justify-between items-start mb-3">
             <div>
               <h3 className="text-lg font-bold text-gray-900">{selected.ticker}</h3>

@@ -4,20 +4,46 @@ export default function FilterPanel({
   sectors,
   defaultFilters,
   resultCount,
+  open,
+  onClose,
 }) {
   const update = (key, value) =>
     setFilters((prev) => ({ ...prev, [key]: value }));
 
   return (
-    <aside className="w-72 bg-white border-r border-gray-200 p-5 min-h-[calc(100vh-73px)] shrink-0">
+    <>
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/40 z-40"
+          onClick={onClose}
+        />
+      )}
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-200 p-5 overflow-y-auto
+          transform transition-transform duration-200 ease-in-out
+          ${open ? "translate-x-0" : "-translate-x-full"}
+          md:static md:translate-x-0 md:z-auto md:min-h-[calc(100vh-73px)] md:shrink-0
+        `}
+      >
       <div className="flex items-center justify-between mb-5">
         <h2 className="font-semibold text-gray-800">Filters</h2>
-        <button
-          onClick={() => setFilters(defaultFilters)}
-          className="text-xs text-blue-600 hover:text-blue-800 font-medium"
-        >
-          Reset
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setFilters(defaultFilters)}
+            className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+          >
+            Reset
+          </button>
+          <button
+            onClick={onClose}
+            className="md:hidden text-gray-400 hover:text-gray-600"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className="bg-blue-50 rounded-lg px-3 py-2 mb-5 text-center">
@@ -140,6 +166,7 @@ export default function FilterPanel({
         </div>
       </div>
     </aside>
+    </>
   );
 }
 

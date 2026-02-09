@@ -115,101 +115,168 @@ export default function StockTable({
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              {COLUMNS.map((col) => (
-                <th
-                  key={col.key}
-                  onClick={() => onSort(col.key)}
-                  className={`px-4 py-3 font-semibold text-gray-600 cursor-pointer hover:bg-gray-100 select-none whitespace-nowrap ${ALIGN_CLASS[col.align]}`}
-                >
-                  {col.label}
-                  {sortKey === col.key && (
-                    <span className="ml-1 text-blue-600">
-                      {sortAsc ? "\u25B2" : "\u25BC"}
-                    </span>
-                  )}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {stocks.map((s) => (
-              <React.Fragment key={s.symbol}>
-                <tr
-                  onClick={() =>
-                    setExpandedSymbol(
-                      expandedSymbol === s.symbol ? null : s.symbol,
-                    )
-                  }
-                  className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
-                >
-                  <td className="px-4 py-3 text-left">
-                    <div className="font-medium text-gray-900">{s.name}</div>
-                    <div className="text-xs text-gray-400">{s.symbol}</div>
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <RsiBadge rsi={s.rsi} />
-                  </td>
-                  <td className="px-4 py-3 text-right font-mono text-gray-700">
-                    {formatMarketCap(s.market_cap)}
-                  </td>
-                  <td className="px-4 py-3 text-right font-mono text-gray-700">
-                    {s.pct_from_high != null ? `${s.pct_from_high.toFixed(1)}%` : "-"}
-                  </td>
-                  <td className="px-4 py-3 text-right font-mono text-gray-700">
-                    {s.forward_pe != null ? s.forward_pe.toFixed(1) : "-"}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    {s.earnings_growth != null ? (
-                      <span
-                        className={
-                          s.earnings_growth > 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }
-                      >
-                        {s.earnings_growth > 0 ? "+" : ""}
-                        {s.earnings_growth.toFixed(1)}%
-                      </span>
-                    ) : (
-                      "-"
-                    )}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    {s.revenue_growth != null ? (
-                      <span
-                        className={
-                          s.revenue_growth > 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }
-                      >
-                        {s.revenue_growth > 0 ? "+" : ""}
-                        {s.revenue_growth.toFixed(1)}%
-                      </span>
-                    ) : (
-                      "-"
-                    )}
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <RecBadge rec={s.recommendation} mean={s.recommendation_mean} />
-                  </td>
-                </tr>
-                {expandedSymbol === s.symbol && (
-                  <ExpandedRow
-                    stock={s}
-                    sectorAvg={sectorAverages[s.sector]}
-                  />
-                )}
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
+    <>
+      {/* Mobile card view */}
+      <div className="md:hidden space-y-3">
+        {stocks.map((s) => (
+          <div
+            key={s.symbol}
+            onClick={() =>
+              setExpandedSymbol(expandedSymbol === s.symbol ? null : s.symbol)
+            }
+            className="bg-white rounded-lg border border-gray-200 p-3 cursor-pointer active:bg-gray-50"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="min-w-0">
+                <div className="font-medium text-gray-900 truncate">{s.name}</div>
+                <div className="text-xs text-gray-400">{s.symbol}</div>
+              </div>
+              <RsiBadge rsi={s.rsi} />
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <div>
+                <span className="text-gray-500">Cap</span>
+                <p className="font-mono text-gray-800">{formatMarketCap(s.market_cap)}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">52W %</span>
+                <p className="font-mono text-gray-800">{s.pct_from_high != null ? `${s.pct_from_high.toFixed(1)}%` : "-"}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">Fwd PE</span>
+                <p className="font-mono text-gray-800">{s.forward_pe != null ? s.forward_pe.toFixed(1) : "-"}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">EPS</span>
+                <p className={`font-mono ${s.earnings_growth > 0 ? "text-green-600" : "text-red-600"}`}>
+                  {s.earnings_growth != null ? `${s.earnings_growth > 0 ? "+" : ""}${s.earnings_growth.toFixed(1)}%` : "-"}
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500">Rev</span>
+                <p className={`font-mono ${s.revenue_growth > 0 ? "text-green-600" : "text-red-600"}`}>
+                  {s.revenue_growth != null ? `${s.revenue_growth > 0 ? "+" : ""}${s.revenue_growth.toFixed(1)}%` : "-"}
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500">Rating</span>
+                <p><RecBadge rec={s.recommendation} mean={s.recommendation_mean} /></p>
+              </div>
+            </div>
+            {expandedSymbol === s.symbol && (
+              <div className="mt-3 pt-3 border-t border-gray-100 grid grid-cols-2 gap-2 text-xs">
+                <Detail label="Sector" value={s.sector} />
+                <Detail label="Price" value={s.current_price != null ? `$${s.current_price.toFixed(2)}` : "-"} />
+                <Detail label="52W High" value={s.fifty_two_week_high != null ? `$${s.fifty_two_week_high.toFixed(2)}` : "-"} />
+                <Detail label="200D SMA" value={s.sma_200 != null ? `$${s.sma_200.toFixed(2)}` : "-"} />
+                <Detail label="% of 200DMA" value={s.pct_from_200dma != null ? `${s.pct_from_200dma.toFixed(1)}%` : "-"} />
+                <Detail label="Trailing PER" value={s.trailing_pe != null ? s.trailing_pe.toFixed(2) : "-"} />
+                <Detail label="Sector Avg PER" value={sectorAverages[s.sector] != null ? sectorAverages[s.sector].toFixed(2) : "-"} />
+                <Detail label="Div Yield" value={s.dividend_yield != null ? `${s.dividend_yield.toFixed(2)}%` : "-"} />
+                <Detail label="Beta" value={s.beta != null ? s.beta.toFixed(2) : "-"} />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-    </div>
+
+      {/* Desktop table view */}
+      <div className="hidden md:block bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                {COLUMNS.map((col) => (
+                  <th
+                    key={col.key}
+                    onClick={() => onSort(col.key)}
+                    className={`px-4 py-3 font-semibold text-gray-600 cursor-pointer hover:bg-gray-100 select-none whitespace-nowrap ${ALIGN_CLASS[col.align]}`}
+                  >
+                    {col.label}
+                    {sortKey === col.key && (
+                      <span className="ml-1 text-blue-600">
+                        {sortAsc ? "\u25B2" : "\u25BC"}
+                      </span>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {stocks.map((s) => (
+                <React.Fragment key={s.symbol}>
+                  <tr
+                    onClick={() =>
+                      setExpandedSymbol(
+                        expandedSymbol === s.symbol ? null : s.symbol,
+                      )
+                    }
+                    className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
+                  >
+                    <td className="px-4 py-3 text-left">
+                      <div className="font-medium text-gray-900">{s.name}</div>
+                      <div className="text-xs text-gray-400">{s.symbol}</div>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <RsiBadge rsi={s.rsi} />
+                    </td>
+                    <td className="px-4 py-3 text-right font-mono text-gray-700">
+                      {formatMarketCap(s.market_cap)}
+                    </td>
+                    <td className="px-4 py-3 text-right font-mono text-gray-700">
+                      {s.pct_from_high != null ? `${s.pct_from_high.toFixed(1)}%` : "-"}
+                    </td>
+                    <td className="px-4 py-3 text-right font-mono text-gray-700">
+                      {s.forward_pe != null ? s.forward_pe.toFixed(1) : "-"}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      {s.earnings_growth != null ? (
+                        <span
+                          className={
+                            s.earnings_growth > 0
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {s.earnings_growth > 0 ? "+" : ""}
+                          {s.earnings_growth.toFixed(1)}%
+                        </span>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      {s.revenue_growth != null ? (
+                        <span
+                          className={
+                            s.revenue_growth > 0
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {s.revenue_growth > 0 ? "+" : ""}
+                          {s.revenue_growth.toFixed(1)}%
+                        </span>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <RecBadge rec={s.recommendation} mean={s.recommendation_mean} />
+                    </td>
+                  </tr>
+                  {expandedSymbol === s.symbol && (
+                    <ExpandedRow
+                      stock={s}
+                      sectorAvg={sectorAverages[s.sector]}
+                    />
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 }
