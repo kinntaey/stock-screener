@@ -160,11 +160,11 @@ def compute_sector_averages(stocks: list[dict]) -> dict:
 
 def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthropic) -> str | None:
     """Claude Haiku를 사용하여 종목의 저평가 요약을 생성한다."""
-    prompt = (
+    data_block = (
         f"Stock: {stock['name']} ({stock['symbol']})\n"
-        f"Sector: {stock['sector']}\n"
+        f"Sector: {stock['sector']} / {stock.get('sub_industry', '')}\n"
         f"Price: ${stock.get('current_price')}\n"
-        f"Forward PE: {stock.get('forward_pe')}, Sector Avg PE: {sector_avg_pe}\n"
+        f"Forward PE: {stock.get('forward_pe')} (Sector Avg: {sector_avg_pe})\n"
         f"RSI(14): {stock.get('rsi')}\n"
         f"52W High %: {stock.get('pct_from_high')}%\n"
         f"EPS Growth: {stock.get('earnings_growth')}%\n"
@@ -177,14 +177,19 @@ def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthro
     try:
         message = client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=150,
+            max_tokens=300,
             messages=[{
                 "role": "user",
                 "content": (
-                    "Based on the following stock data, write a 2-3 sentence summary "
-                    "explaining why this stock appears undervalued and oversold. "
-                    "Be specific about the numbers. No disclaimers.\n\n"
-                    + prompt
+                    "You are a stock analyst. A stock has been flagged as oversold and "
+                    "undervalued by a screener. Based on your knowledge of this company "
+                    "and the data below, explain in 2-3 sentences:\n"
+                    "1) What recent events, market conditions, or sector trends likely "
+                    "caused the selloff\n"
+                    "2) Why the current price may represent a good entry point\n\n"
+                    "Do NOT just restate the numbers. Provide context and insight. "
+                    "No disclaimers, no markdown formatting.\n\n"
+                    + data_block
                 ),
             }],
         )
