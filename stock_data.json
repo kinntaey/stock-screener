@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-03-21T02:07:31.285689+00:00",
+    "collected_at": "2026-03-21T02:31:36.796322+00:00",
     "total_collected": 503,
     "passed_filter": 11,
     "sp500_price": 6506.48,
@@ -746,7 +746,10 @@
       "dividend_yield": 288.0,
       "beta": 0.42,
       "passed_filter": true,
-      "ai_summary": "Amgen's sharp selloff likely stems from a combination of biotech sector headwinds around GLP-1 competition concerns and broader large-cap healthcare rotation, exacerbated by profit-taking after the stock's strong run to its 52-week high. The current valuation presents an attractive entry point given the stock is trading below its sector average PE multiple despite 112% EPS growth, strong analyst consensus, and a fortress balance sheet that supports its 2.88% dividend yield, while the RSI of 35.86 and low beta of 0.42 suggest the selloff has been overdone relative to fundamental deterioration. At these levels, investors are being compensated for near-term uncertainty while retaining exposure to a diversified pharma leader with significant cash generation and pricing power in oncology and biologics."
+      "ai_summary": {
+        "en": "Amgen's sharp decline from its 52-week high appears driven by profit-taking after exceptional EPS growth and broader biotech sector rotation, despite the company's defensive characteristics (low beta of 0.42) making it less vulnerable than peers. The combination of an RSI below 36 signaling oversold conditions, a forward PE below sector average, and the stock still trading above its 200-day moving average suggests the selloff has been overdone and presents an attractive entry for income and value-focused investors, particularly given management's ability to grow earnings at over 100% while maintaining a meaningful dividend yield.",
+        "ko": "뛰어난 EPS 성장 이후의 차익실현과 광범위한 바이오텍 섹터 회전이 암젠의 급락을 주도했으며, 낮은 베타(0.42)는 경쟁사보다 덜 취약함을 보여줍니다. RSI가 36 이하로 과매도 상태이고, 순이익 배수가 섹터 평균 이하이며, 주가가 여전히 200일선 위에 있다는 점을 고려할 때 하락이 과도하며, 100% 이상의 수익 성장을 달성하면서 의미 있는 배당수익률을 유지하는 경영진의 능력을 감안할 때 소득과 가치 지향 투자자에게 매력적인 진입점을 제시합니다."
+      }
     },
     {
       "symbol": "APH",
@@ -1319,7 +1322,10 @@
       "dividend_yield": 238.0,
       "beta": 1.26,
       "passed_filter": true,
-      "ai_summary": "Bank of America has likely been caught in the recent broader financial sector selloff driven by recession fears and the inverted yield curve, which compresses net interest margins that are critical to bank profitability, particularly hitting large diversified banks that are sensitive to macro cycles. The stock's RSI of 34.87 and position at 94% of its 200-day moving average suggest capitulation selling has likely overdone the downside, especially given that the company is trading at a forward PE of 9.51—a significant 28% discount to its sector average—while simultaneously posting 21% EPS growth that demonstrates underlying earnings strength independent of the recent price action. At this valuation combined with strong analyst conviction (buy rating at 1.58) and a historical dividend yield that appears attractive relative to where rates have moved, the risk-reward profile appears asymmetric for value-oriented investors with a medium-term horizon."
+      "ai_summary": {
+        "en": "Bank of America has likely been caught in the broader financials selloff driven by recession fears and the recent banking sector volatility, combined with investor concerns about net interest margin compression in a potentially declining rate environment, which explains the RSI dip despite strong 21% EPS growth. At 9.5x forward PE—a significant discount to the 13.1x sector average—paired with robust earnings momentum and a 2.4% dividend yield from a systemically important bank with fortress-like capital positions, the stock offers compelling value for risk-tolerant investors willing to bet on either rate stability or economic resilience.",
+        "ko": "경기침체 우려와 최근 은행권 변동성에 따른 광범위한 금융섹터 매도세, 그리고 금리 인하 환경에서의 순이자마진 축소 우려가 강한 21% EPS 성장에도 불구하고 BAC를 압박했을 가능성이 높습니다. 섹터 평균 13.1배 대비 9.5배의 포워드 PER, 견조한 실적 모멘텀, 그리고 견고한 자본금을 보유한 대형 금융기관으로서의 2.4% 배당 수익률을 고려할 때, 금리 안정성이나 경제 회복력에 베팅할 의향이 있는 위험회피 성향이 낮은 투자자들에게 매력적인 매수 기회를 제공합니다."
+      }
     },
     {
       "symbol": "BAX",
@@ -1650,7 +1656,10 @@
       "dividend_yield": 81.0,
       "beta": 1.26,
       "passed_filter": true,
-      "ai_summary": "Broadcom has likely been swept up in the recent semiconductor sector rotation and AI-related profit-taking, compounded by concerns over cyclical chip demand and potential margin pressures in networking infrastructure, despite the company's strong underlying fundamentals. At a forward PE of 17.6 versus the sector average of 21.3, combined with an RSI near 39 indicating genuine oversold conditions and a dividend yield of 8.1%, the stock appears to offer an attractive risk-reward for long-term investors, especially given the company's exceptional 188% EPS growth trajectory and overwhelming strong-buy consensus from analysts. The pullback to near the 200-day moving average provides a disciplined entry point before the market likely re-rates this quality compounder as near-term sector headwinds ease."
+      "ai_summary": {
+        "en": "Broadcom's selloff appears driven by broader semiconductor sector volatility and AI infrastructure concerns that have pressured chip stocks despite the company's exceptional 188% EPS growth, with the stock now trading 25% below its 52-week high and below its 200-day moving average. The current valuation offers a compelling entry point given the 17.6x forward PE trades at a significant discount to the 21.3x sector average while maintaining strong analyst conviction (strong buy), suggesting the market has overreacted to near-term headwinds while the company's underlying growth trajectory and dominant position in infrastructure chips remain intact.",
+        "ko": "광대역통신의 매도세는 AI 인프라 수요 불확실성과 반도체 섹터 전반의 변동성에 따른 것으로 보이지만, 188% EPS 성장이라는 예외적인 실적에도 불구하고 주가가 52주 고점에서 25% 하락한 상태입니다. 현재 17.6배 포워드 PER이 섹터 평균 21.3배보다 현저히 낮고 강한 매수 평가(스트롱 바이)를 받고 있다는 점에서, 시장이 단기 악재에 과도하게 반응했을 가능성이 높으며 회사의 인프라 칩 지배력과 성장성이 여전히 견고한 좋은 진입점으로 판단됩니다."
+      }
     },
     {
       "symbol": "BR",
@@ -1893,7 +1902,10 @@
       "dividend_yield": 178.0,
       "beta": 1.14,
       "passed_filter": true,
-      "ai_summary": "Capital One's 30% pullback from its 52-week high likely reflects broader financial sector anxiety around rising interest rates, credit normalization fears, and recession concerns that disproportionately impact consumer lenders, combined with recent earnings volatility or cautious guidance on credit losses. The stock's 7.4x forward PE—less than 60% of the sector average—paired with exceptional 22% EPS growth and analyst consensus buy ratings suggests the market has overcorrected on cyclical concerns, leaving significant margin of safety for investors willing to tolerate near-term credit cycle headwinds."
+      "ai_summary": {
+        "en": "Capital One has likely been punished alongside broader financial sector weakness and rising recession concerns, as consumer finance companies face headwinds from higher rates impacting loan demand and credit quality deterioration. However, the stock's valuation has compressed to a forward PE of 7.38 versus the sector average of 13.12, while the company demonstrates robust 22% EPS growth and 52% revenue growth, suggesting the market has overshot downside risk and priced in worse outcomes than fundamentals support.",
+        "ko": "경기침체 우려와 금리 인상에 따른 금융권 약세로 캐피탈원이 함께 하락했을 가능성이 높으며, 소비자금융사는 대출 수요 감소와 신용 악화 압력을 직면하고 있습니다. 그러나 현재 주가는 순이익성장률 22%, 매출성장률 52%를 기록하면서도 포워드 PER이 7.38로 산업평균 13.12보다 훨씬 낮게 평가되어 있어, 시장이 펀더멘탈이 뒷받침하는 수준 이상으로 과도하게 하락장을 형성했을 가능성이 있습니다."
+      }
     },
     {
       "symbol": "CAH",
@@ -3317,7 +3329,7 @@
       "rsi": 73.5,
       "sma_200": 149.01,
       "pct_from_200dma": 129.21,
-      "fifty_two_week_high": 194.679,
+      "fifty_two_week_high": 194.68,
       "pct_from_high": 98.9,
       "recommendation": "strong_buy",
       "recommendation_mean": 1.46875,
@@ -4864,7 +4876,10 @@
       "dividend_yield": 239.0,
       "beta": 0.37,
       "passed_filter": true,
-      "ai_summary": "Gilead has likely sold off due to broader biotech sector rotation pressures and concerns about its HIV revenue concentration, despite solid 23% EPS growth signaling operational strength. The current valuation trades below sector average at a 14.3x forward PE with an RSI of 36.83 indicating oversold conditions, while the stock still sits above its 200-day moving average, suggesting this is a pullback within an uptrend rather than fundamental deterioration. The low beta of 0.37 combined with buy-rated analyst consensus and a dividend yield spike presents an attractive entry for defensive-minded healthcare investors seeking exposure to a profitable biotech with margin expansion potential."
+      "ai_summary": {
+        "en": "Gilead has likely experienced a sharp selloff due to profit-taking after strong EPS growth, combined with sector-wide biotech volatility and concerns about slower revenue expansion despite earnings momentum. The 23.4% EPS growth contrasting with modest 4.7% revenue growth suggests margin expansion rather than top-line strength, which may have spooked investors worried about sustainability. At current levels with an RSI of 36.8 indicating oversold conditions, a forward PE below sector average, strong analyst support, and a defensive beta of 0.37 suggesting the stock typically falls less in downturns, the risk-reward appears favorable for patient investors betting on a rebound as sentiment normalizes.",
+        "ko": "길리어드는 강한 EPS 성장 이후 차익실현과 바이오테크 섹터 변동성, 수익 확대 둔화에 대한 우려로 인해 급격한 낙폭을 겪었을 가능성이 높다. 4.7% 수익 성장에 비해 23.4% EPS 성장이 나타나는 것은 순익률 개선에 의존하고 있어 지속 가능성을 우려한 투자자들이 매도했을 수 있다. RSI 36.8의 과매도 신호, 섹터 평균 이하의 포워드 PER, 강한 애널리스트 평가, 저변동성을 의미하는 베타 0.37을 고려하면 현재 가격은 시장 심리 정상화에 베팅하는 인내심 있는 투자자들에게 매력적인 진입점을 제시한다."
+      }
     },
     {
       "symbol": "GPN",
@@ -4953,7 +4968,10 @@
       "dividend_yield": 222.0,
       "beta": 1.34,
       "passed_filter": true,
-      "ai_summary": "Goldman Sachs has likely been hammered by the recent selloff in financial stocks driven by inverted yield curves dampening net interest margins, coupled with broader macro uncertainty reducing M&A and capital markets activity that investment banks depend on. The stock's RSI of 39.53 combined with trading 17.38% below its 52-week high suggests panic selling has overshot fundamentals, especially given the company is delivering solid 17.3% EPS growth and 15.2% revenue growth while trading at a forward PE discount to its sector—indicating the market is pricing in a more severe earnings slowdown than current trends justify. At this valuation with a consensus buy rating and the stock firmly above its 200-day moving average, the risk-reward appears favorable for investors with a medium-term horizon who believe the banking sector stabilizes."
+      "ai_summary": {
+        "en": "Goldman Sachs has likely sold off due to broader financial sector concerns around interest rate volatility and recession fears, compounded by recent banking sector instability that spooked investors on large-cap investment banks despite GS's strong fundamentals. The current valuation is attractive given the stock trades below sector average PE while maintaining double-digit EPS and revenue growth, oversold RSI conditions suggest capitulation selling, and the 2.5 analyst buy rating coupled with fortress-like dividend yield indicates institutional confidence that the market has overshot downside risk.",
+        "ko": "골드만삭스는 금리 변동성과 경기침체 우려, 그리고 최근 뱅킹 부문 불안정이 광범위한 금융 섹터 약세를 초래하며 대형 투자은행에 대한 투자자 우려를 촉발했을 가능성이 높다. 현재 밸류에이션은 섹터 평균보다 낮은 PE로 거래되면서도 두 자릿수 EPS와 매출 성장을 유지하고 있으며, 과매도 RSI 수치는 과도한 하락장을 시사하고, 2.5의 매수 등급과 높은 배당 수익률은 기관투자자들의 시장이 하방 위험을 과도하게 반영했다는 신뢰를 보여준다."
+      }
     },
     {
       "symbol": "HAL",
@@ -5042,7 +5060,10 @@
       "dividend_yield": 62.0,
       "beta": 1.34,
       "passed_filter": true,
-      "ai_summary": "HCA has likely been caught in the recent healthcare sector rotation and broader market volatility, exacerbated by concerns about labor cost inflation, operational pressures in hospital systems, and the stock's elevated beta of 1.34 making it particularly sensitive to market downturns. The current valuation at 14.8x forward PE below sector average, combined with an RSI of 35.56 signaling oversold conditions and exceptional 44.5% EPS growth, suggests the market is pricing in unwarranted pessimism around a fundamentally strong operator with improving profitability. At this entry point, investors gain exposure to a best-in-class hospital operator trading at a discount to peers despite accelerating earnings, with the stock still trading above its 200-day moving average, indicating this selloff may be temporary rather than structural."
+      "ai_summary": {
+        "en": "HCA's sharp decline from its 52-week high likely stems from rising interest rate concerns pressuring healthcare facility operators' debt servicing costs, combined with normalized admission volumes post-pandemic and investor rotation away from cyclical healthcare stocks during economic uncertainty. The current valuation offers an attractive entry point given the company's sub-sector average PE ratio, strong 44.5% EPS growth, RSI below 40 signaling capitulation, and a compelling 62% dividend yield that suggests the market has overcorrected relative to fundamental earnings power and cash generation capacity.",
+        "ko": "HCA의 급락은 의료 시설 운영업체의 부채 상환 비용을 압박하는 금리 인상 우려와 팬데믹 이후 정상화된 입원 수준, 경제 불확실성 속 경기순환주 회전 등으로 비롯되었습니다. 현재 가치평가는 섹터 평균보다 낮은 PE 비율, 강한 44.5% EPS 성장률, 35 미만의 RSI가 나타내는 과도한 매도, 그리고 시장이 펀더멘털 수익력과 현금 창출 능력 대비 과도히 조정되었음을 시사하는 매력적인 62% 배당 수익률을 고려할 때 좋은 진입점을 제공합니다."
+      }
     },
     {
       "symbol": "DOC",
@@ -5417,7 +5438,10 @@
       "dividend_yield": 278.0,
       "beta": 0.71,
       "passed_filter": true,
-      "ai_summary": "IBM's recent decline likely stems from broader tech sector rotation pressures and investor concerns about AI disruption in legacy IT services, despite the company's solid 89.9% EPS growth suggesting successful cost restructuring and margin expansion. At 18x forward PE versus the sector's 21.3x average, combined with an RSI of 39.3 indicating genuine oversold conditions and trading 13% below its 200-day moving average, the stock appears to have overshot fundamental deterioration—particularly given the strong analyst consensus buy rating and IBM's defensive 0.71 beta making it attractive during volatility. The entry point is compelling for value-oriented investors seeking exposure to a dividend-yielding defensive tech play that's pricing in worse-case scenarios when management is actually delivering profitable growth."
+      "ai_summary": {
+        "en": "IBM's recent selloff likely stems from broader tech sector rotation concerns and investor anxiety about AI monetization timelines, despite the company's strong 89.9% EPS growth and solid 12.2% revenue expansion suggesting successful business transformation. The stock's 39.3 RSI indicates oversold conditions, trading 13% below its 200-day average with a forward PE of 18 versus sector average of 21, while the 0.71 beta provides defensive characteristics—making this an attractive entry for value-oriented investors seeking exposure to IBM's hybrid cloud and AI services growth at a discount to historical valuations.",
+        "ko": "IBM의 최근 하락은 기술 섹터 로테이션 우려와 AI 수익화 타이밍에 대한 투자자 불안감에서 비롯되었으나, 89.9%의 EPS 성장과 12.2% 수익 증가율은 기업 구조 전환의 성공을 시사합니다. 39.3의 RSI는 과매도 상태를 나타내고 200일 이동평균 대비 13% 하락했으며, 순증익 배수 18은 섹터 평균 21보다 낮고 0.71의 베타는 방어적 특성을 제공하므로, 하이브리드 클라우드 및 AI 서비스 성장에 노출되길 원하는 가치 투자자들에게 매력적인 진입점입니다."
+      }
     },
     {
       "symbol": "IEX",
@@ -6848,7 +6872,10 @@
       "dividend_yield": 35.0,
       "beta": 1.28,
       "passed_filter": true,
-      "ai_summary": "Meta's recent selloff likely stems from a combination of AI infrastructure spending concerns, regulatory scrutiny around content moderation, and broader tech sector volatility—compounded by the stock's 74% run-up from its 52-week low creating profit-taking pressure. The current valuation offers an attractive entry point given Meta is trading below sector average PE multiples (16.5x vs 18.3x), maintains robust 23.8% revenue growth with accelerating profitability (10.7% EPS growth), and trades near its 200-day moving average suggesting oversold technical conditions that frequently precede reversals, all while analyst consensus strongly supports the name. The RSI of 32.68 indicates genuine oversold territory where mean reversion is historically probable, particularly for a high-beta growth stock with this caliber of underlying business momentum."
+      "ai_summary": {
+        "en": "Meta's sharp decline to 74.56% below its 52-week high was likely driven by broader tech sector rotation concerns and AI infrastructure cost anxieties that have periodically pressured mega-cap tech stocks, despite the company's strong 23.8% revenue growth and improving profitability trajectory. The current valuation at 16.5x forward PE significantly discounts the sector average of 18.3x, while the RSI of 32.68 signals genuine oversold conditions rather than fundamental deterioration—particularly compelling given the analyst consensus of strong buy and Meta's demonstrated ability to grow earnings at 10.7% while trading at a valuation discount that doesn't reflect its scale or AI leadership positioning.",
+        "ko": "메타의 52주 최고가 대비 74.56% 하락은 광범위한 기술주 섹터 로테이션 우려와 AI 인프라 비용 불안감이 대형 기술주를 주기적으로 압박했을 가능성이 높으며, 이는 23.8% 매출 성장과 수익성 개선 추세와 무관하게 발생했습니다. 현재 밸류에이션의 포워드 PE 16.5배는 섹터 평균 18.3배를 크게 하회하고 있으며, RSI 32.68은 펀더멘털 악화가 아닌 진정한 초과매도 신호를 나타내고 있습니다—특히 강력한 매수 컨센서스와 10.7% 수익 성장력을 감안할 때, 메타의 규모와 AI 리더십 위상을 반영하지 못하는 밸류에이션 할인이 매력적인 진입 기회를 제공합니다."
+      }
     },
     {
       "symbol": "MET",
@@ -7619,7 +7646,10 @@
       "dividend_yield": 2.0,
       "beta": 2.38,
       "passed_filter": true,
-      "ai_summary": "The recent selloff likely stems from a combination of profit-taking after Nvidia's explosive AI-driven rally, broader semiconductor sector weakness amid concerns about AI capex sustainability, and macro headwinds causing investors to de-risk high-beta growth stocks. At $172.7, the stock trades at a significant 27% discount to sector average valuations despite maintaining exceptional 95.6% EPS growth and a strong buy consensus, suggesting the market has temporarily overcorrected on growth concerns rather than fundamentals deteriorating. The RSI of 37.8 coupled with the stock still trading near its 200-day moving average indicates room for mean reversion, especially given Nvidia's structural advantages in AI infrastructure remain intact and the forward PE now offers compelling value for a company growing earnings at nearly double the sector rate."
+      "ai_summary": {
+        "en": "Nvidia's 19% decline from its 52-week high likely stems from profit-taking after its extraordinary AI-driven rally, combined with sector-wide semiconductor volatility and concerns about near-term AI spending normalization, pushing the stock 3% below its 200-day moving average despite record fundamentals. The oversold RSI of 37.8, forward PE of 15.5x (27% below sector average), and explosive 95.6% EPS growth create a compelling asymmetric opportunity where the market is pricing in significant deceleration that Nvidia's actual revenue trajectory and AI infrastructure dominance don't support.",
+        "ko": "Nvidia의 52주 최고가 대비 19% 하락은 AI 열풍으로 인한 급등 이후의 이익 실현과 반도체 섹터 변동성, 그리고 단기 AI 지출 정상화 우려로 인한 것으로 보이며, 이에 따라 주가가 200일 이동평균선 3% 아래에 위치하고 있습니다. 37.8의 과매도 RSI, 섹터 평균 대비 27% 낮은 15.5배의 포워드 PE, 그리고 95.6%의 폭발적 EPS 성장률은 시장이 Nvidia의 실제 매출 궤적과 AI 인프라 지배력이 뒷받침하지 않는 급격한 둔화를 반영하고 있어 매력적인 비대칭 기회를 제공합니다."
+      }
     },
     {
       "symbol": "NVR",
@@ -10766,7 +10796,10 @@
       "dividend_yield": 232.0,
       "beta": 1.07,
       "passed_filter": true,
-      "ai_summary": "Wells Fargo has likely been pressured by broader banking sector weakness driven by persistent rate cut expectations and margin compression concerns, compounded by the company's legacy reputation issues that make it a \"sell first, ask questions later\" target during risk-off environments. At 9.8x forward PE versus a 13.1x sector average, combined with double-digit EPS growth and a near-normal dividend yield (the 232% figure appears to be a data error), the stock trades at a meaningful valuation discount that doesn't reflect the bank's solid earnings trajectory or improving operational performance. The oversold RSI and position 93% above the 200-day moving average suggest panic-driven selling has created an attractive entry for investors willing to look past the company's checkered past and benefit from eventual sector mean reversion."
+      "ai_summary": {
+        "en": "Wells Fargo has likely been pressured by broader banking sector headwinds including rising deposit competition, net interest margin compression concerns, and lingering regulatory scrutiny that continues to weigh on investor sentiment despite the company's solid 13% EPS growth. The stock's valuation of 9.8x forward earnings sits substantially below its 13.1x sector average while trading near its 200-day moving average with an RSI of 38, suggesting that recent selling has been excessive relative to fundamentals, particularly given the bank's continued earnings momentum and strong buy consensus from analysts. At this price, investors gain exposure to a dividend-paying financial with reasonable growth at a meaningful discount to peers, though the unusually high dividend yield warrants verification of payout sustainability.",
+        "ko": "Wells Fargo는 예금 경쟁 심화, 순이자마진 압축 우려, 지속적인 규제 감시 등 광범위한 은행 부문 악재로 인해 13% EPS 성장에도 불구하고 투매 압력을 받고 있습니다. 이 회사의 9.8배 포워드 PER은 업계 평균 13.1배보다 크게 낮으며 RSI 38과 200일 이동평균 근처에서 거래되고 있어, 최근의 매도세가 펀더멘털 대비 과도하다는 신호이며 특히 지속적인 순이익 성장과 강한 매수 컨센서스를 고려하면 더욱 그렇습니다. 현재 가격대에서 투자자들은 동료사보다 의미 있는 할인가에 배당금을 지급하는 금융주에 노출될 수 있지만, 비정상적으로 높은 배당수익률은 배당금 지속가능성 검증이 필요합니다."
+      }
     },
     {
       "symbol": "WELL",
