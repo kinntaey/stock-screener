@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-03-21T01:56:03.857273+00:00",
+    "collected_at": "2026-03-21T02:07:31.285689+00:00",
     "total_collected": 503,
     "passed_filter": 11,
     "sp500_price": 6506.48,
@@ -746,7 +746,7 @@
       "dividend_yield": 288.0,
       "beta": 0.42,
       "passed_filter": true,
-      "ai_summary": "# Amgen Valuation Summary\n\nAmgen appears significantly undervalued with a forward P/E of 14.94, trading below the healthcare sector average of 15.84, while simultaneously showing strong fundamentals including exceptional 112.1% EPS growth and a robust 2.5 buy rating from analysts. The stock is deeply oversold with an RSI of 35.86 (well below the 50 neutral threshold) and trades at only 88.89% of its 52-week high, despite trading above its 200-day moving average, suggesting a technical capitulation has created a compelling entry point. The combination of valuation discount, earnings momentum, analyst consensus, and"
+      "ai_summary": "Amgen's sharp selloff likely stems from a combination of biotech sector headwinds around GLP-1 competition concerns and broader large-cap healthcare rotation, exacerbated by profit-taking after the stock's strong run to its 52-week high. The current valuation presents an attractive entry point given the stock is trading below its sector average PE multiple despite 112% EPS growth, strong analyst consensus, and a fortress balance sheet that supports its 2.88% dividend yield, while the RSI of 35.86 and low beta of 0.42 suggest the selloff has been overdone relative to fundamental deterioration. At these levels, investors are being compensated for near-term uncertainty while retaining exposure to a diversified pharma leader with significant cash generation and pricing power in oncology and biologics."
     },
     {
       "symbol": "APH",
@@ -1319,7 +1319,7 @@
       "dividend_yield": 238.0,
       "beta": 1.26,
       "passed_filter": true,
-      "ai_summary": "# Bank of America (BAC) - Undervalued and Oversold Analysis\n\nBank of America is trading at a significant discount with a forward PE of 9.52, roughly 27% below the financial sector average of 13.12, while simultaneously showing technical weakness with an RSI of 34.87 indicating oversold conditions and trading 94% of its 200-day moving average. The combination of strong fundamentals—including 21.2% EPS growth, an exceptional 2.38% dividend yield, and a consensus buy rating—coupled with the stock trading near its 52-week lows (81.95% of highs) suggests the market has overreacted to recent"
+      "ai_summary": "Bank of America has likely been caught in the recent broader financial sector selloff driven by recession fears and the inverted yield curve, which compresses net interest margins that are critical to bank profitability, particularly hitting large diversified banks that are sensitive to macro cycles. The stock's RSI of 34.87 and position at 94% of its 200-day moving average suggest capitulation selling has likely overdone the downside, especially given that the company is trading at a forward PE of 9.51—a significant 28% discount to its sector average—while simultaneously posting 21% EPS growth that demonstrates underlying earnings strength independent of the recent price action. At this valuation combined with strong analyst conviction (buy rating at 1.58) and a historical dividend yield that appears attractive relative to where rates have moved, the risk-reward profile appears asymmetric for value-oriented investors with a medium-term horizon."
     },
     {
       "symbol": "BAX",
@@ -1650,7 +1650,7 @@
       "dividend_yield": 81.0,
       "beta": 1.26,
       "passed_filter": true,
-      "ai_summary": "# Broadcom (AVGO) - Undervalued and Oversold Assessment\n\nBroadcom trades at a forward PE of 17.57, a significant 18% discount to its sector average of 21.34, while simultaneously delivering exceptional EPS growth of 188.1% and solid revenue growth of 16.4%, suggesting the market has underpriced its earnings power. The stock's RSI of 39.21 signals oversold conditions, and at 95.68% of its 200-day moving average with a strong buy analyst consensus (1.22), it appears positioned for a rebound despite trading 74.89% below its 52-week high. The combination"
+      "ai_summary": "Broadcom has likely been swept up in the recent semiconductor sector rotation and AI-related profit-taking, compounded by concerns over cyclical chip demand and potential margin pressures in networking infrastructure, despite the company's strong underlying fundamentals. At a forward PE of 17.6 versus the sector average of 21.3, combined with an RSI near 39 indicating genuine oversold conditions and a dividend yield of 8.1%, the stock appears to offer an attractive risk-reward for long-term investors, especially given the company's exceptional 188% EPS growth trajectory and overwhelming strong-buy consensus from analysts. The pullback to near the 200-day moving average provides a disciplined entry point before the market likely re-rates this quality compounder as near-term sector headwinds ease."
     },
     {
       "symbol": "BR",
@@ -1893,7 +1893,7 @@
       "dividend_yield": 178.0,
       "beta": 1.14,
       "passed_filter": true,
-      "ai_summary": "# Capital One (COF) - Undervalued and Oversold Analysis\n\nCapital One appears significantly undervalued trading at a forward PE of 7.38, less than 56% of the financial sector average of 13.12, while simultaneously delivering exceptional fundamentals with 22.2% EPS growth and 51.6% revenue growth that justify a premium multiple. The stock is technically oversold with an RSI of 36.04 and trading 84.23% of its 200-day moving average, suggesting the recent selloff has created a disconnect between valuation and the company's strong operational performance. With an analyst consensus \"buy\" rating and the stock down 69.89%"
+      "ai_summary": "Capital One's 30% pullback from its 52-week high likely reflects broader financial sector anxiety around rising interest rates, credit normalization fears, and recession concerns that disproportionately impact consumer lenders, combined with recent earnings volatility or cautious guidance on credit losses. The stock's 7.4x forward PE—less than 60% of the sector average—paired with exceptional 22% EPS growth and analyst consensus buy ratings suggests the market has overcorrected on cyclical concerns, leaving significant margin of safety for investors willing to tolerate near-term credit cycle headwinds."
     },
     {
       "symbol": "CAH",
@@ -3229,8 +3229,8 @@
       "rsi": 66.78,
       "sma_200": 130.96,
       "pct_from_200dma": 120.4,
-      "fifty_two_week_high": 169.89,
-      "pct_from_high": 92.81,
+      "fifty_two_week_high": 169.9,
+      "pct_from_high": 92.8,
       "recommendation": "buy",
       "recommendation_mean": 1.80769,
       "dividend_yield": 161.0,
@@ -4864,7 +4864,7 @@
       "dividend_yield": 239.0,
       "beta": 0.37,
       "passed_filter": true,
-      "ai_summary": "# Gilead Sciences (GILD) - Undervalued and Oversold Analysis\n\nGilead Sciences appears significantly undervalued with a forward PE of 14.27, trading at a 10% discount to its healthcare sector average of 15.84, while simultaneously showing an RSI of 36.83 indicating oversold conditions and trading only 87.23% of its 52-week high. The company's strong 23.4% EPS growth paired with analyst buy consensus (1.71 rating) and a remarkably low beta of 0.37 suggest it's a defensive healthcare play that has been disproportionately sold off. Additionally, the stock trades"
+      "ai_summary": "Gilead has likely sold off due to broader biotech sector rotation pressures and concerns about its HIV revenue concentration, despite solid 23% EPS growth signaling operational strength. The current valuation trades below sector average at a 14.3x forward PE with an RSI of 36.83 indicating oversold conditions, while the stock still sits above its 200-day moving average, suggesting this is a pullback within an uptrend rather than fundamental deterioration. The low beta of 0.37 combined with buy-rated analyst consensus and a dividend yield spike presents an attractive entry for defensive-minded healthcare investors seeking exposure to a profitable biotech with margin expansion potential."
     },
     {
       "symbol": "GPN",
@@ -4953,7 +4953,7 @@
       "dividend_yield": 222.0,
       "beta": 1.34,
       "passed_filter": true,
-      "ai_summary": "# Goldman Sachs (GS) - Undervalued & Oversold Analysis\n\nGoldman Sachs is trading at a forward PE of 12.51, a 4.6% discount to the financial sector average of 13.12, while delivering robust growth with 17.3% EPS growth and 15.2% revenue growth that far outpaces typical sector performance. The RSI(14) of 39.53 indicates oversold conditions, and the stock is trading only 82.62% of its 52-week high despite trading above its 200-day moving average at 102.76%, suggesting a temporary pullback in an otherwise strong uptrend. With an"
+      "ai_summary": "Goldman Sachs has likely been hammered by the recent selloff in financial stocks driven by inverted yield curves dampening net interest margins, coupled with broader macro uncertainty reducing M&A and capital markets activity that investment banks depend on. The stock's RSI of 39.53 combined with trading 17.38% below its 52-week high suggests panic selling has overshot fundamentals, especially given the company is delivering solid 17.3% EPS growth and 15.2% revenue growth while trading at a forward PE discount to its sector—indicating the market is pricing in a more severe earnings slowdown than current trends justify. At this valuation with a consensus buy rating and the stock firmly above its 200-day moving average, the risk-reward appears favorable for investors with a medium-term horizon who believe the banking sector stabilizes."
     },
     {
       "symbol": "HAL",
@@ -5042,7 +5042,7 @@
       "dividend_yield": 62.0,
       "beta": 1.34,
       "passed_filter": true,
-      "ai_summary": "# HCA Healthcare (HCA) - Undervalued and Oversold Analysis\n\nHCA Healthcare trades at a forward PE of 14.84, a 6.4% discount to the healthcare sector average of 15.84, while delivering exceptional 44.5% EPS growth that far outpaces its 6.7% revenue growth, suggesting significant operational efficiency gains. The stock's RSI of 35.56 indicates oversold conditions, and despite trading 88.74% below its 52-week high, it maintains a 62.0% dividend yield and trades above its 200-day moving average at 111.78%, signaling institutional accumulation despite recent selloff pressure"
+      "ai_summary": "HCA has likely been caught in the recent healthcare sector rotation and broader market volatility, exacerbated by concerns about labor cost inflation, operational pressures in hospital systems, and the stock's elevated beta of 1.34 making it particularly sensitive to market downturns. The current valuation at 14.8x forward PE below sector average, combined with an RSI of 35.56 signaling oversold conditions and exceptional 44.5% EPS growth, suggests the market is pricing in unwarranted pessimism around a fundamentally strong operator with improving profitability. At this entry point, investors gain exposure to a best-in-class hospital operator trading at a discount to peers despite accelerating earnings, with the stock still trading above its 200-day moving average, indicating this selloff may be temporary rather than structural."
     },
     {
       "symbol": "DOC",
@@ -5417,7 +5417,7 @@
       "dividend_yield": 278.0,
       "beta": 0.71,
       "passed_filter": true,
-      "ai_summary": "# IBM Stock Analysis Summary\n\nIBM appears significantly undervalued with a forward P/E ratio of 18.01, trading at a 15.7% discount to the Information Technology sector average of 21.34, while simultaneously demonstrating strong fundamentals with 89.9% EPS growth and 12.2% revenue growth. The stock is technically oversold at an RSI of 39.3, trading 12.53% below its 200-day moving average and only 25.59% below its 52-week high, suggesting a potential reversal opportunity. Combined with a buy-rated analyst consensus and a defensive beta of 0.71, IBM presents an attractive entry point for value-"
+      "ai_summary": "IBM's recent decline likely stems from broader tech sector rotation pressures and investor concerns about AI disruption in legacy IT services, despite the company's solid 89.9% EPS growth suggesting successful cost restructuring and margin expansion. At 18x forward PE versus the sector's 21.3x average, combined with an RSI of 39.3 indicating genuine oversold conditions and trading 13% below its 200-day moving average, the stock appears to have overshot fundamental deterioration—particularly given the strong analyst consensus buy rating and IBM's defensive 0.71 beta making it attractive during volatility. The entry point is compelling for value-oriented investors seeking exposure to a dividend-yielding defensive tech play that's pricing in worse-case scenarios when management is actually delivering profitable growth."
     },
     {
       "symbol": "IEX",
@@ -6533,8 +6533,8 @@
       "rsi": 70.11,
       "sma_200": 51.32,
       "pct_from_200dma": 142.87,
-      "fifty_two_week_high": 76.1,
-      "pct_from_high": 96.35,
+      "fifty_two_week_high": 77.36,
+      "pct_from_high": 94.78,
       "recommendation": "hold",
       "recommendation_mean": 2.83333,
       "dividend_yield": 644.0,
@@ -6848,7 +6848,7 @@
       "dividend_yield": 35.0,
       "beta": 1.28,
       "passed_filter": true,
-      "ai_summary": "# Meta Platforms (META) - Undervalued and Oversold Analysis\n\nMeta is trading at a forward PE of 16.55, a notable 11.8% discount to its Communication Services sector average of 18.34, while simultaneously demonstrating strong fundamental growth with 23.8% revenue expansion and 10.7% EPS growth. The stock's RSI of 32.68 signals oversold conditions, and at 86.11% of its 200-day moving average, it's trading well below its recent uptrend, yet analysts maintain a strong buy rating. The exceptional 35% dividend yield reflects the compressed valuation, presenting an attractive entry point for value-oriented investors"
+      "ai_summary": "Meta's recent selloff likely stems from a combination of AI infrastructure spending concerns, regulatory scrutiny around content moderation, and broader tech sector volatility—compounded by the stock's 74% run-up from its 52-week low creating profit-taking pressure. The current valuation offers an attractive entry point given Meta is trading below sector average PE multiples (16.5x vs 18.3x), maintains robust 23.8% revenue growth with accelerating profitability (10.7% EPS growth), and trades near its 200-day moving average suggesting oversold technical conditions that frequently precede reversals, all while analyst consensus strongly supports the name. The RSI of 32.68 indicates genuine oversold territory where mean reversion is historically probable, particularly for a high-beta growth stock with this caliber of underlying business momentum."
     },
     {
       "symbol": "MET",
@@ -7619,7 +7619,7 @@
       "dividend_yield": 2.0,
       "beta": 2.38,
       "passed_filter": true,
-      "ai_summary": "# NVDA Investment Summary\n\nNvidia is trading at a significant valuation discount with a forward PE of 15.54, substantially below the technology sector average of 21.34, while simultaneously demonstrating exceptional growth metrics with 95.6% EPS growth and 73.2% revenue growth that justify a premium multiple. The stock's RSI of 37.83 indicates oversold conditions, and at 81.39% below its 52-week high, it offers a compelling entry point for investors, especially given the unanimous strong buy analyst consensus and a growing 2.0% dividend yield that has been added recently. Despite the elevated 2.38 beta reflecting volatility, the combination of dep"
+      "ai_summary": "The recent selloff likely stems from a combination of profit-taking after Nvidia's explosive AI-driven rally, broader semiconductor sector weakness amid concerns about AI capex sustainability, and macro headwinds causing investors to de-risk high-beta growth stocks. At $172.7, the stock trades at a significant 27% discount to sector average valuations despite maintaining exceptional 95.6% EPS growth and a strong buy consensus, suggesting the market has temporarily overcorrected on growth concerns rather than fundamentals deteriorating. The RSI of 37.8 coupled with the stock still trading near its 200-day moving average indicates room for mean reversion, especially given Nvidia's structural advantages in AI infrastructure remain intact and the forward PE now offers compelling value for a company growing earnings at nearly double the sector rate."
     },
     {
       "symbol": "NVR",
@@ -10766,7 +10766,7 @@
       "dividend_yield": 232.0,
       "beta": 1.07,
       "passed_filter": true,
-      "ai_summary": "# Wells Fargo (WFC) - Undervalued and Oversold Analysis\n\nWells Fargo appears significantly undervalued with a forward P/E of 9.79, trading at a 25% discount to the financial sector average of 13.12, while simultaneously showing oversold momentum with an RSI of 38.56 well below the 50 midpoint. The stock is trading 20.62% below its 52-week high yet maintains robust 13.1% EPS growth, suggesting the market has overreacted to recent concerns and created an attractive entry point for value investors. With a strong analyst buy rating (2.0) and the stock sitting 6."
+      "ai_summary": "Wells Fargo has likely been pressured by broader banking sector weakness driven by persistent rate cut expectations and margin compression concerns, compounded by the company's legacy reputation issues that make it a \"sell first, ask questions later\" target during risk-off environments. At 9.8x forward PE versus a 13.1x sector average, combined with double-digit EPS growth and a near-normal dividend yield (the 232% figure appears to be a data error), the stock trades at a meaningful valuation discount that doesn't reflect the bank's solid earnings trajectory or improving operational performance. The oversold RSI and position 93% above the 200-day moving average suggest panic-driven selling has created an attractive entry for investors willing to look past the company's checkered past and benefit from eventual sector mean reversion."
     },
     {
       "symbol": "WELL",
