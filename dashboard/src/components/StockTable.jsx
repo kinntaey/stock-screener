@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import { useI18n } from "../i18n/I18nContext";
+
+const REC_COLORS = {
+  strong_buy: "bg-green-100 text-green-700",
+  buy: "bg-emerald-100 text-emerald-700",
+  hold: "bg-yellow-100 text-yellow-700",
+  sell: "bg-red-100 text-red-700",
+  strong_sell: "bg-red-200 text-red-800",
+};
 
 const ALIGN_CLASS = {
   left: "text-left",
   right: "text-right",
   center: "text-center",
 };
-
-const COLUMNS = [
-  { key: "name", label: "Name", align: "left" },
-  { key: "rsi", label: "RSI", align: "right" },
-  { key: "market_cap", label: "Market Cap", align: "right" },
-  { key: "pct_from_high", label: "52W High %", align: "right" },
-  { key: "forward_pe", label: "Fwd PER", align: "right" },
-  { key: "earnings_growth", label: "EPS Growth", align: "right" },
-  { key: "revenue_growth", label: "Rev Growth", align: "right" },
-  { key: "recommendation", label: "Rating", align: "center" },
-];
 
 function formatMarketCap(v) {
   if (v == null) return "-";
@@ -25,17 +23,18 @@ function formatMarketCap(v) {
 }
 
 function RsiBadge({ rsi }) {
+  const { t } = useI18n();
   if (rsi == null) return <span className="text-gray-400">-</span>;
   let color, label;
   if (rsi < 30) {
     color = "bg-red-100 text-red-700";
-    label = "Oversold";
+    label = t("rsi.oversold");
   } else if (rsi < 40) {
     color = "bg-orange-100 text-orange-700";
-    label = "Weak";
+    label = t("rsi.weak");
   } else {
     color = "bg-gray-100 text-gray-600";
-    label = "Neutral";
+    label = t("rsi.neutral");
   }
   return (
     <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${color}`}>
@@ -44,19 +43,23 @@ function RsiBadge({ rsi }) {
   );
 }
 
+const REC_KEYS = {
+  strong_buy: "rec.strongBuy",
+  buy: "rec.buy",
+  hold: "rec.hold",
+  sell: "rec.sell",
+  strong_sell: "rec.strongSell",
+};
+
 function RecBadge({ rec, mean }) {
+  const { t } = useI18n();
   if (!rec) return <span className="text-gray-400">-</span>;
-  const labels = {
-    strong_buy: { text: "Strong Buy", color: "bg-green-100 text-green-700" },
-    buy: { text: "Buy", color: "bg-emerald-100 text-emerald-700" },
-    hold: { text: "Hold", color: "bg-yellow-100 text-yellow-700" },
-    sell: { text: "Sell", color: "bg-red-100 text-red-700" },
-    strong_sell: { text: "Strong Sell", color: "bg-red-200 text-red-800" },
-  };
-  const info = labels[rec] || { text: rec, color: "bg-gray-100 text-gray-600" };
+  const tKey = REC_KEYS[rec];
+  const color = REC_COLORS[rec] || "bg-gray-100 text-gray-600";
+  const text = tKey ? t(tKey) : rec;
   return (
-    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${info.color}`}>
-      {info.text}
+    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${color}`}>
+      {text}
       {mean != null && (
         <span className="ml-1 opacity-60">({mean.toFixed(1)})</span>
       )}
@@ -64,22 +67,23 @@ function RecBadge({ rec, mean }) {
   );
 }
 
-function ExpandedRow({ stock, sectorAvg }) {
+function ExpandedRow({ stock, sectorAvg, colCount }) {
+  const { t } = useI18n();
   return (
     <tr className="bg-blue-50">
-      <td colSpan={COLUMNS.length} className="px-4 py-3">
+      <td colSpan={colCount} className="px-4 py-3">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <Detail label="Symbol" value={stock.symbol} />
-          <Detail label="Sector" value={stock.sector} />
-          <Detail label="Sub-Industry" value={stock.sub_industry} />
-          <Detail label="Price" value={stock.current_price != null ? `$${stock.current_price.toFixed(2)}` : "-"} />
-          <Detail label="52W High" value={stock.fifty_two_week_high != null ? `$${stock.fifty_two_week_high.toFixed(2)}` : "-"} />
-          <Detail label="Trailing PER" value={stock.trailing_pe != null ? stock.trailing_pe.toFixed(2) : "-"} />
-          <Detail label="Sector Avg PER" value={sectorAvg != null ? sectorAvg.toFixed(2) : "-"} />
-          <Detail label="200D SMA" value={stock.sma_200 != null ? `$${stock.sma_200.toFixed(2)}` : "-"} />
-          <Detail label="% of 200DMA" value={stock.pct_from_200dma != null ? `${stock.pct_from_200dma.toFixed(1)}%` : "-"} />
-          <Detail label="Dividend Yield" value={stock.dividend_yield != null ? `${stock.dividend_yield.toFixed(2)}%` : "-"} />
-          <Detail label="Beta" value={stock.beta != null ? stock.beta.toFixed(2) : "-"} />
+          <Detail label={t("table.detail.symbol")} value={stock.symbol} />
+          <Detail label={t("table.detail.sector")} value={stock.sector} />
+          <Detail label={t("table.detail.subIndustry")} value={stock.sub_industry} />
+          <Detail label={t("table.detail.price")} value={stock.current_price != null ? `$${stock.current_price.toFixed(2)}` : "-"} />
+          <Detail label={t("table.detail.52wHigh")} value={stock.fifty_two_week_high != null ? `$${stock.fifty_two_week_high.toFixed(2)}` : "-"} />
+          <Detail label={t("table.detail.trailingPer")} value={stock.trailing_pe != null ? stock.trailing_pe.toFixed(2) : "-"} />
+          <Detail label={t("table.detail.sectorAvgPer")} value={sectorAvg != null ? sectorAvg.toFixed(2) : "-"} />
+          <Detail label={t("table.detail.200dSma")} value={stock.sma_200 != null ? `$${stock.sma_200.toFixed(2)}` : "-"} />
+          <Detail label={t("table.detail.pctOf200dma")} value={stock.pct_from_200dma != null ? `${stock.pct_from_200dma.toFixed(1)}%` : "-"} />
+          <Detail label={t("table.detail.divYield")} value={stock.dividend_yield != null ? `${stock.dividend_yield.toFixed(2)}%` : "-"} />
+          <Detail label={t("table.detail.beta")} value={stock.beta != null ? stock.beta.toFixed(2) : "-"} />
         </div>
       </td>
     </tr>
@@ -102,13 +106,25 @@ export default function StockTable({
   onSort,
   sectorAverages,
 }) {
+  const { t } = useI18n();
   const [expandedSymbol, setExpandedSymbol] = useState(null);
+
+  const columns = useMemo(() => [
+    { key: "name", label: t("table.col.name"), align: "left" },
+    { key: "rsi", label: t("table.col.rsi"), align: "right" },
+    { key: "market_cap", label: t("table.col.marketCap"), align: "right" },
+    { key: "pct_from_high", label: t("table.col.52wHigh"), align: "right" },
+    { key: "forward_pe", label: t("table.col.fwdPer"), align: "right" },
+    { key: "earnings_growth", label: t("table.col.epsGrowth"), align: "right" },
+    { key: "revenue_growth", label: t("table.col.revGrowth"), align: "right" },
+    { key: "recommendation", label: t("table.col.rating"), align: "center" },
+  ], [t]);
 
   if (stocks.length === 0) {
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
         <p className="text-gray-500">
-          조건에 맞는 종목이 없습니다. 필터를 조정해보세요.
+          {t("table.noResults")}
         </p>
       </div>
     );
@@ -135,45 +151,45 @@ export default function StockTable({
             </div>
             <div className="grid grid-cols-3 gap-2 text-xs">
               <div>
-                <span className="text-gray-500">Cap</span>
+                <span className="text-gray-500">{t("table.mobile.cap")}</span>
                 <p className="font-mono text-gray-800">{formatMarketCap(s.market_cap)}</p>
               </div>
               <div>
-                <span className="text-gray-500">52W %</span>
+                <span className="text-gray-500">{t("table.mobile.52w")}</span>
                 <p className="font-mono text-gray-800">{s.pct_from_high != null ? `${s.pct_from_high.toFixed(1)}%` : "-"}</p>
               </div>
               <div>
-                <span className="text-gray-500">Fwd PE</span>
+                <span className="text-gray-500">{t("table.mobile.fwdPe")}</span>
                 <p className="font-mono text-gray-800">{s.forward_pe != null ? s.forward_pe.toFixed(1) : "-"}</p>
               </div>
               <div>
-                <span className="text-gray-500">EPS</span>
+                <span className="text-gray-500">{t("table.mobile.eps")}</span>
                 <p className={`font-mono ${s.earnings_growth > 0 ? "text-green-600" : "text-red-600"}`}>
                   {s.earnings_growth != null ? `${s.earnings_growth > 0 ? "+" : ""}${s.earnings_growth.toFixed(1)}%` : "-"}
                 </p>
               </div>
               <div>
-                <span className="text-gray-500">Rev</span>
+                <span className="text-gray-500">{t("table.mobile.rev")}</span>
                 <p className={`font-mono ${s.revenue_growth > 0 ? "text-green-600" : "text-red-600"}`}>
                   {s.revenue_growth != null ? `${s.revenue_growth > 0 ? "+" : ""}${s.revenue_growth.toFixed(1)}%` : "-"}
                 </p>
               </div>
               <div>
-                <span className="text-gray-500">Rating</span>
+                <span className="text-gray-500">{t("table.mobile.rating")}</span>
                 <p><RecBadge rec={s.recommendation} mean={s.recommendation_mean} /></p>
               </div>
             </div>
             {expandedSymbol === s.symbol && (
               <div className="mt-3 pt-3 border-t border-gray-100 grid grid-cols-2 gap-2 text-xs">
-                <Detail label="Sector" value={s.sector} />
-                <Detail label="Price" value={s.current_price != null ? `$${s.current_price.toFixed(2)}` : "-"} />
-                <Detail label="52W High" value={s.fifty_two_week_high != null ? `$${s.fifty_two_week_high.toFixed(2)}` : "-"} />
-                <Detail label="200D SMA" value={s.sma_200 != null ? `$${s.sma_200.toFixed(2)}` : "-"} />
-                <Detail label="% of 200DMA" value={s.pct_from_200dma != null ? `${s.pct_from_200dma.toFixed(1)}%` : "-"} />
-                <Detail label="Trailing PER" value={s.trailing_pe != null ? s.trailing_pe.toFixed(2) : "-"} />
-                <Detail label="Sector Avg PER" value={sectorAverages[s.sector] != null ? sectorAverages[s.sector].toFixed(2) : "-"} />
-                <Detail label="Div Yield" value={s.dividend_yield != null ? `${s.dividend_yield.toFixed(2)}%` : "-"} />
-                <Detail label="Beta" value={s.beta != null ? s.beta.toFixed(2) : "-"} />
+                <Detail label={t("table.detail.sector")} value={s.sector} />
+                <Detail label={t("table.detail.price")} value={s.current_price != null ? `$${s.current_price.toFixed(2)}` : "-"} />
+                <Detail label={t("table.detail.52wHigh")} value={s.fifty_two_week_high != null ? `$${s.fifty_two_week_high.toFixed(2)}` : "-"} />
+                <Detail label={t("table.detail.200dSma")} value={s.sma_200 != null ? `$${s.sma_200.toFixed(2)}` : "-"} />
+                <Detail label={t("table.detail.pctOf200dma")} value={s.pct_from_200dma != null ? `${s.pct_from_200dma.toFixed(1)}%` : "-"} />
+                <Detail label={t("table.detail.trailingPer")} value={s.trailing_pe != null ? s.trailing_pe.toFixed(2) : "-"} />
+                <Detail label={t("table.detail.sectorAvgPer")} value={sectorAverages[s.sector] != null ? sectorAverages[s.sector].toFixed(2) : "-"} />
+                <Detail label={t("table.detail.divYield")} value={s.dividend_yield != null ? `${s.dividend_yield.toFixed(2)}%` : "-"} />
+                <Detail label={t("table.detail.beta")} value={s.beta != null ? s.beta.toFixed(2) : "-"} />
               </div>
             )}
           </div>
@@ -186,7 +202,7 @@ export default function StockTable({
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
-                {COLUMNS.map((col) => (
+                {columns.map((col) => (
                   <th
                     key={col.key}
                     onClick={() => onSort(col.key)}
@@ -269,6 +285,7 @@ export default function StockTable({
                     <ExpandedRow
                       stock={s}
                       sectorAvg={sectorAverages[s.sector]}
+                      colCount={columns.length}
                     />
                   )}
                 </React.Fragment>

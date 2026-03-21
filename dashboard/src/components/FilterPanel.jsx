@@ -1,3 +1,5 @@
+import { useI18n } from "../i18n/I18nContext";
+
 export default function FilterPanel({
   filters,
   setFilters,
@@ -7,6 +9,7 @@ export default function FilterPanel({
   open,
   onClose,
 }) {
+  const { t } = useI18n();
   const update = (key, value) =>
     setFilters((prev) => ({ ...prev, [key]: value }));
 
@@ -27,13 +30,13 @@ export default function FilterPanel({
         `}
       >
       <div className="flex items-center justify-between mb-5">
-        <h2 className="font-semibold text-gray-800">Filters</h2>
+        <h2 className="font-semibold text-gray-800">{t("filter.title")}</h2>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setFilters(defaultFilters)}
             className="text-xs text-blue-600 hover:text-blue-800 font-medium"
           >
-            Reset
+            {t("filter.reset")}
           </button>
           <button
             onClick={onClose}
@@ -48,13 +51,13 @@ export default function FilterPanel({
 
       <div className="bg-blue-50 rounded-lg px-3 py-2 mb-5 text-center">
         <span className="text-2xl font-bold text-blue-700">{resultCount}</span>
-        <span className="text-sm text-blue-600 ml-1">종목</span>
+        <span className="text-sm text-blue-600 ml-1">{t("filter.resultUnit")}</span>
       </div>
 
       <div className="space-y-5">
         <RangeFilter
-          label="RSI (14)"
-          hint="낮을수록 과매도 → 반등 기대"
+          label={t("filter.rsi.label")}
+          hint={t("filter.rsi.hint")}
           minValue={filters.rsiMin}
           maxValue={filters.rsiMax}
           min={0}
@@ -64,8 +67,8 @@ export default function FilterPanel({
         />
 
         <SliderFilter
-          label="Market Cap"
-          hint="높을수록 대형 안정주"
+          label={t("filter.marketCap.label")}
+          hint={t("filter.marketCap.hint")}
           value={filters.marketCap}
           min={50}
           max={500}
@@ -75,8 +78,8 @@ export default function FilterPanel({
         />
 
         <SliderFilter
-          label="52W High %"
-          hint="높을수록 고점 근처 → 강세 신호"
+          label={t("filter.52wHigh.label")}
+          hint={t("filter.52wHigh.hint")}
           value={filters.pctFromHigh}
           min={50}
           max={95}
@@ -85,8 +88,8 @@ export default function FilterPanel({
         />
 
         <SliderFilter
-          label="EPS Growth"
-          hint="높을수록 이익 성장 양호"
+          label={t("filter.epsGrowth.label")}
+          hint={t("filter.epsGrowth.hint")}
           value={filters.epsGrowth}
           min={-20}
           max={50}
@@ -95,8 +98,8 @@ export default function FilterPanel({
         />
 
         <SliderFilter
-          label="Revenue Growth (YoY)"
-          hint="높을수록 매출 성장 양호"
+          label={t("filter.revGrowth.label")}
+          hint={t("filter.revGrowth.hint")}
           value={filters.revenueGrowth}
           min={-20}
           max={50}
@@ -112,9 +115,9 @@ export default function FilterPanel({
               onChange={(e) => update("buyOnly", e.target.checked)}
               className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
-            <span className="text-sm text-gray-700">Buy / Strong Buy Only</span>
+            <span className="text-sm text-gray-700">{t("filter.buyOnly.label")}</span>
           </label>
-          <p className="text-xs text-gray-400 mt-0.5 ml-6">점수 낮을수록 강력 매수 추천</p>
+          <p className="text-xs text-gray-400 mt-0.5 ml-6">{t("filter.buyOnly.hint")}</p>
         </div>
 
         <div>
@@ -126,10 +129,10 @@ export default function FilterPanel({
               className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <span className="text-sm text-gray-700">
-              PER &lt; Sector Average
+              {t("filter.perBelowSector.label")}
             </span>
           </label>
-          <p className="text-xs text-gray-400 mt-0.5 ml-6">PER 낮을수록 저평가 가능성</p>
+          <p className="text-xs text-gray-400 mt-0.5 ml-6">{t("filter.perBelowSector.hint")}</p>
         </div>
 
         <div>
@@ -141,22 +144,22 @@ export default function FilterPanel({
               className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <span className="text-sm text-gray-700">
-              Price &gt; 80% of 200DMA
+              {t("filter.above200dma.label")}
             </span>
           </label>
-          <p className="text-xs text-gray-400 mt-0.5 ml-6">장기 이동평균 위 = 추세 지지 중</p>
+          <p className="text-xs text-gray-400 mt-0.5 ml-6">{t("filter.above200dma.hint")}</p>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Sector
+            {t("filter.sector.label")}
           </label>
           <select
             value={filters.sector}
             onChange={(e) => update("sector", e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value="all">All Sectors</option>
+            <option value="all">{t("filter.sector.all")}</option>
             {sectors.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -198,6 +201,7 @@ function SliderFilter({ label, hint, value, min, max, step = 1, onChange, format
 }
 
 function RangeFilter({ label, hint, minValue, maxValue, min, max, step = 1, onMinChange, onMaxChange }) {
+  const { t } = useI18n();
   return (
     <div>
       <div className="flex justify-between items-center mb-0.5">
@@ -209,7 +213,7 @@ function RangeFilter({ label, hint, minValue, maxValue, min, max, step = 1, onMi
       {hint && <p className="text-xs text-gray-400 mb-1">{hint}</p>}
       <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 w-8">Min</span>
+          <span className="text-xs text-gray-500 w-8">{t("filter.rangeMin")}</span>
           <input
             type="range"
             min={min}
@@ -224,7 +228,7 @@ function RangeFilter({ label, hint, minValue, maxValue, min, max, step = 1, onMi
           />
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 w-8">Max</span>
+          <span className="text-xs text-gray-500 w-8">{t("filter.rangeMax")}</span>
           <input
             type="range"
             min={min}

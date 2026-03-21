@@ -1,4 +1,8 @@
+import { useI18n } from "../i18n/I18nContext";
+
 export default function SectorPERTable({ sectorAverages }) {
+  const { t } = useI18n();
+
   if (!sectorAverages || Object.keys(sectorAverages).length === 0) {
     return null;
   }
@@ -8,7 +12,7 @@ export default function SectorPERTable({ sectorAverages }) {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-5">
       <h3 className="font-semibold text-gray-800 mb-4">
-        Sector Average Forward PER
+        {t("sectorPer.title")}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {sorted.map(([sector, per]) => (

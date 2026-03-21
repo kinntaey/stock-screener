@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { useI18n } from "./i18n/I18nContext";
 import FilterPanel from "./components/FilterPanel";
 import StockTable from "./components/StockTable";
 import SectorPERTable from "./components/SectorPERTable";
 import InfoBox from "./components/InfoBox";
 import StockSearch from "./components/StockSearch";
+import LanguageToggle from "./components/LanguageToggle";
 
 const DEFAULT_FILTERS = {
   rsiMin: 0,
@@ -19,6 +21,7 @@ const DEFAULT_FILTERS = {
 };
 
 export default function App() {
+  const { t } = useI18n();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,9 +33,13 @@ export default function App() {
   const closeFilter = useCallback(() => setFilterOpen(false), []);
 
   useEffect(() => {
+    document.title = t("app.title");
+  }, [t]);
+
+  useEffect(() => {
     fetch(import.meta.env.BASE_URL + "stock_data.json")
       .then((r) => {
-        if (!r.ok) throw new Error("stock_data.json을 불러올 수 없습니다.");
+        if (!r.ok) throw new Error("Failed to load stock_data.json");
         return r.json();
       })
       .then(setData)
@@ -105,7 +112,7 @@ export default function App() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-gray-500">Loading...</p>
+        <p className="text-lg text-gray-500">{t("app.loading")}</p>
       </div>
     );
   }
@@ -114,10 +121,10 @@ export default function App() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md">
-          <h2 className="text-red-700 font-semibold mb-2">Error</h2>
+          <h2 className="text-red-700 font-semibold mb-2">{t("app.error.title")}</h2>
           <p className="text-red-600">{error}</p>
           <p className="text-sm text-gray-500 mt-3">
-            screener.py를 실행하여 stock_data.json을 생성해주세요.
+            {t("app.error.runScreener")}
           </p>
         </div>
       </div>
@@ -139,7 +146,7 @@ export default function App() {
               </svg>
             </button>
             <h1 className="text-lg md:text-2xl font-bold text-gray-900 truncate">
-              S&P 500 Oversold & Undervalued
+              {t("app.title")}
             </h1>
             {data.metadata && data.metadata.sp500_above_200dma != null && (
               <span
@@ -150,22 +157,29 @@ export default function App() {
                 }`}
               >
                 {data.metadata.sp500_above_200dma
-                  ? "S&P500 상승 추세"
-                  : "S&P500 하락 추세 — 매수 대기 권장"}
+                  ? t("trend.bullish")
+                  : t("trend.bearish")}
               </span>
             )}
           </div>
-          {data.stocks && <StockSearch stocks={data.stocks} />}
+          <div className="flex items-center gap-2">
+            {data.stocks && <StockSearch stocks={data.stocks} />}
+            <LanguageToggle />
+          </div>
         </div>
         {data.metadata && (
           <p className="text-xs md:text-sm text-gray-500 mt-1">
-            수집: {new Date(data.metadata.collected_at).toLocaleString()} | 전체{" "}
-            {data.metadata.total_collected}종목 중 필터 통과{" "}
-            {data.metadata.passed_filter}종목
+            {t("meta.collected")}: {new Date(data.metadata.collected_at).toLocaleString()} |{" "}
+            {t("meta.totalOf", {
+              total: data.metadata.total_collected,
+              passed: data.metadata.passed_filter,
+            })}
             {data.metadata.sp500_price != null && data.metadata.sp500_200dma != null && (
               <span className="hidden sm:inline ml-2">
-                | S&P500 {data.metadata.sp500_price.toLocaleString()} (200DMA{" "}
-                {data.metadata.sp500_200dma.toLocaleString()})
+                | {t("meta.sp500Label", {
+                  price: data.metadata.sp500_price.toLocaleString(),
+                  dma: data.metadata.sp500_200dma.toLocaleString(),
+                })}
               </span>
             )}
           </p>
@@ -179,8 +193,8 @@ export default function App() {
             }`}
           >
             {data.metadata.sp500_above_200dma
-              ? "S&P500 상승 추세"
-              : "S&P500 하락 추세 — 매수 대기 권장"}
+              ? t("trend.bullish")
+              : t("trend.bearish")}
           </span>
         )}
       </header>
