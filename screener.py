@@ -1,6 +1,7 @@
 """S&P 500 Stock Screener - 가치투자 필터링"""
 
 import json
+import os
 import time
 import logging
 from datetime import datetime, timezone
@@ -10,6 +11,7 @@ import numpy as np
 import pandas as pd
 import requests
 import yfinance as yf
+from anthropic import Anthropic
 from bs4 import BeautifulSoup
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -156,6 +158,42 @@ def compute_sector_averages(stocks: list[dict]) -> dict:
     }
 
 
+def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthropic) -> str | None:
+    """Claude Haiku를 사용하여 종목의 저평가 요약을 생성한다."""
+    prompt = (
+        f"Stock: {stock['name']} ({stock['symbol']})\n"
+        f"Sector: {stock['sector']}\n"
+        f"Price: ${stock.get('current_price')}\n"
+        f"Forward PE: {stock.get('forward_pe')}, Sector Avg PE: {sector_avg_pe}\n"
+        f"RSI(14): {stock.get('rsi')}\n"
+        f"52W High %: {stock.get('pct_from_high')}%\n"
+        f"EPS Growth: {stock.get('earnings_growth')}%\n"
+        f"Revenue Growth: {stock.get('revenue_growth')}%\n"
+        f"Analyst Rating: {stock.get('recommendation')} ({stock.get('recommendation_mean')})\n"
+        f"200DMA %: {stock.get('pct_from_200dma')}%\n"
+        f"Dividend Yield: {stock.get('dividend_yield')}%\n"
+        f"Beta: {stock.get('beta')}\n"
+    )
+    try:
+        message = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=150,
+            messages=[{
+                "role": "user",
+                "content": (
+                    "Based on the following stock data, write a 2-3 sentence summary "
+                    "explaining why this stock appears undervalued and oversold. "
+                    "Be specific about the numbers. No disclaimers.\n\n"
+                    + prompt
+                ),
+            }],
+        )
+        return message.content[0].text.strip()
+    except Exception as e:
+        logger.warning("AI summary failed for %s: %s", stock["symbol"], e)
+        return None
+
+
 def apply_default_filters(stocks: list[dict], sector_avgs: dict) -> list[dict]:
     """기본 9개 필터를 적용한다."""
     passed = []
@@ -234,6 +272,18 @@ def main() -> None:
     passed_symbols = {s["symbol"] for s in passed}
     for s in all_stocks:
         s["passed_filter"] = s["symbol"] in passed_symbols
+
+    # Generate AI summaries for filtered stocks
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if api_key:
+        client = Anthropic(api_key=api_key)
+        for s in all_stocks:
+            if s.get("passed_filter"):
+                logger.info("Generating AI summary for %s...", s["symbol"])
+                s["ai_summary"] = generate_ai_summary(s, sector_avgs.get(s["sector"]), client)
+                time.sleep(0.5)
+    else:
+        logger.warning("ANTHROPIC_API_KEY not set, skipping AI summaries")
 
     output = {
         "metadata": {

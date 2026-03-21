@@ -85,6 +85,12 @@ function ExpandedRow({ stock, sectorAvg, colCount }) {
           <Detail label={t("table.detail.divYield")} value={stock.dividend_yield != null ? `${stock.dividend_yield.toFixed(2)}%` : "-"} />
           <Detail label={t("table.detail.beta")} value={stock.beta != null ? stock.beta.toFixed(2) : "-"} />
         </div>
+        {stock.ai_summary && (
+          <div className="mt-3 pt-3 border-t border-gray-200">
+            <span className="text-gray-500 text-xs">{t("table.detail.aiSummary")}</span>
+            <p className="mt-1 text-sm text-gray-700 leading-relaxed">{stock.ai_summary}</p>
+          </div>
+        )}
       </td>
     </tr>
   );
@@ -190,6 +196,12 @@ export default function StockTable({
                 <Detail label={t("table.detail.sectorAvgPer")} value={sectorAverages[s.sector] != null ? sectorAverages[s.sector].toFixed(2) : "-"} />
                 <Detail label={t("table.detail.divYield")} value={s.dividend_yield != null ? `${s.dividend_yield.toFixed(2)}%` : "-"} />
                 <Detail label={t("table.detail.beta")} value={s.beta != null ? s.beta.toFixed(2) : "-"} />
+                {s.ai_summary && (
+                  <div className="col-span-2 mt-2 pt-2 border-t border-gray-100">
+                    <span className="text-gray-500">{t("table.detail.aiSummary")}</span>
+                    <p className="mt-1 text-gray-700 leading-relaxed">{s.ai_summary}</p>
+                  </div>
+                )}
               </div>
             )}
           </div>
