@@ -158,8 +158,8 @@ def compute_sector_averages(stocks: list[dict]) -> dict:
     }
 
 
-def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthropic) -> str | None:
-    """Claude Haiku를 사용하여 종목의 저평가 요약을 생성한다."""
+def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthropic) -> dict[str, str] | None:
+    """Claude Haiku를 사용하여 종목의 저평가 요약을 영어/한국어로 생성한다."""
     data_block = (
         f"Stock: {stock['name']} ({stock['symbol']})\n"
         f"Sector: {stock['sector']} / {stock.get('sub_industry', '')}\n"
@@ -177,7 +177,7 @@ def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthro
     try:
         message = client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=300,
+            max_tokens=500,
             messages=[{
                 "role": "user",
                 "content": (
@@ -189,11 +189,22 @@ def generate_ai_summary(stock: dict, sector_avg_pe: float | None, client: Anthro
                     "2) Why the current price may represent a good entry point\n\n"
                     "Do NOT just restate the numbers. Provide context and insight. "
                     "No disclaimers, no markdown formatting.\n\n"
+                    "Respond in this exact format (no other text):\n"
+                    "[EN] <English summary>\n"
+                    "[KO] <Korean summary>\n\n"
                     + data_block
                 ),
             }],
         )
-        return message.content[0].text.strip()
+        text = message.content[0].text.strip()
+        result = {}
+        for line in text.split("\n"):
+            line = line.strip()
+            if line.startswith("[EN]"):
+                result["en"] = line[4:].strip()
+            elif line.startswith("[KO]"):
+                result["ko"] = line[4:].strip()
+        return result if result else None
     except Exception as e:
         logger.warning("AI summary failed for %s: %s", stock["symbol"], e)
         return None
